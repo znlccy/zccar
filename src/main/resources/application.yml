@@ -1,0 +1,52 @@
+server:
+  # 服务端口
+  port: 8888
+spring:
+  session:
+    timeout: 30m
+  # 应用配置
+  application:
+    # 应用名称
+    name: zccar
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  # 数据源配置
+  datasource:
+    # 连接池类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接URL
+    url: jdbc:mysql://localhost:3306/db_car?characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    # 用户名
+    username: root
+    # 密码
+    password: root
+    druid:
+      max-wait: 3000
+      max-active: 100
+      min-idle: 8
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        reset-enable: false
+        url-pattern: /druid/*
+        login-username: root
+        login-password: root
+
+  # 配置redis
+  redis:
+    lettuce:
+      pool:
+        max-wait: -1ms
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+    host: localhost
+    port: 6379
+    database: 0
+    password:
